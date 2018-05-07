@@ -28,25 +28,40 @@ void Sort::swap(int arr[], int a, int b) {
 }
 
 void Sort::mergesort(int arr[], int low, int high) {
-	if (low - high < 2) {
-		return;
+	if (low < high) {
+		int mid = (low + high) / 2;
+		mergesort(arr, low, mid);
+		mergesort(arr, mid + 1, high);
+		merge(arr, low, mid, high);
 	}
-	int mid = (low + high) / 2;
-	mergesort(arr, low, mid);
-	mergesort(arr, mid, high);
-	merge(arr, low, mid, high);
 }
 
 void Sort::merge(int arr[], int low, int mid, int high) {
-	int i = low, j = high;
-	for (int k = low; k < high; k++) {
-		if (i < mid && (j >= high || arr[i] <= arr[j])) {
-			arr[k] = arr[i];
+	int i = low, j = mid + 1, k = 0;
+	int tmp[h - low + 1];
+	while (i <= mid && j <= high) {
+		if (arr[i] < arr[j]) {
+			tmp[k] = arr[i];
+			k++;
 			i++;
 		} else {
 			arr[k] = arr[j];
+			k++;
 			j++;
 		}
+	}
+	while (i <= mid) {
+		tmp[k] = arr[i];
+		k++;
+		i++;
+	}
+	while (j <= high) {
+		tmp[k] = arr[j];
+		k++;
+		j++;
+	}
+	for (i = low; i <= high; i++) {
+		arr[i] = tmp[i - low];
 	}
 }
 
@@ -55,17 +70,18 @@ int Sort::bsearch(int arr[], int size, int key) {
 }
 
 int Sort::bsearch(int arr[], int low, int high, int key) {
-	int mid = (high + low) / 2;
+	if (high >= low) {
+		int mid = low + (high - low) / 2;
 
-	if (arr[mid] == key) {
-		return mid;
-	} else if (mid == low || mid == high) {
-		return -1;
-	}
+		if (arr[mid] == key) {
+			return mid;
+		}
 
-	if (arr[mid] < key) {
-		return bsearch(arr, low, mid, key);
-	} else {
-		return bsearch(arr, mid + 1, high, key);
+		if (arr[mid] > key) {
+			return bsearch(arr, low, mid - 1, key);
+		} else {
+			return bsearch(arr, mid + 1, high, key);
+		}
 	}
+	return -1;
 }
