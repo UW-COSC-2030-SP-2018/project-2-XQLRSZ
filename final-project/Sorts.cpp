@@ -1,7 +1,6 @@
-#include "sorts.h"
+#include "Sorts.h"
 
-
-void sort::quicksort(int arr[], int low, int high) {
+void Sort::quicksort(int arr[], int low, int high) {
 	if (low < high) {
 		int pivot = partition(arr, low, high);
 		quicksort(arr, low, pivot - 1);
@@ -9,7 +8,7 @@ void sort::quicksort(int arr[], int low, int high) {
 	}
 }
 
-int sort::partition(int arr[], int low, int high) {
+int Sort::partition(int arr[], int low, int high) {
 	int pivot = arr[high];
 	int i = low - 1;
 	for (int j = low; j < high - 1; j++) {
@@ -22,11 +21,16 @@ int sort::partition(int arr[], int low, int high) {
 	return i + 1;
 }
 
-void sort::swap(int arr[], int a, int b) {
+void Sort::swap(int arr[], int a, int b) {
 	int tmp = arr[a];
 	arr[a] = arr[b];
 	arr[b] = tmp;
 }
 
-static void mergesort();
-static void bsearch();
+static void mergesort() {
+
+}
+
+static void bsearch() {
+
+}

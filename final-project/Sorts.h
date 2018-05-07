@@ -1,6 +1,6 @@
 #ifndef SORTS_H
 #define SORTS_H
-class sort {
+class Sort {
 public:
 	static void quicksort(int arr[], int low, int high);
 	static void mergesort();

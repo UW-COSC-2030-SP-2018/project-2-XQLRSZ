@@ -1,11 +1,16 @@
 #include "Test.h"
 
-Test::Test(char m[], bool r) {
+Test::Test() {
+	setMessage("");
+	setResult(-1);
+}
+
+Test::Test(string m, bool r) {
 	setMessage(m);
 	setResult(r);
 }
 
-char* Test::getMessage() const {
+string Test::getMessage() const {
 	return message;
 }
 
@@ -13,8 +18,8 @@ bool Test::getResult() const {
 	return result;
 }
 
-void Test::setMessage(char m[]) {
-	*message = *m;
+void Test::setMessage(string m) {
+	message = m;
 }
 
 void Test::setResult(bool r) {
