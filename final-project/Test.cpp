@@ -2,7 +2,7 @@
 
 Test::Test() {
 	setMessage("");
-	setResult(-1);
+	setResult(false);
 }
 
 Test::Test(string m, bool r) {

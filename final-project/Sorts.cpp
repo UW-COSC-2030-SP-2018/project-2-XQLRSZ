@@ -27,10 +27,48 @@ void Sort::swap(int arr[], int a, int b) {
 	arr[b] = tmp;
 }
 
-static void mergesort() {
-
+void Sort::mergesort(int arr[], int low, int high) {
+	if (high > low) {
+		int mid = (low + high) / 2;
+		mergesort(arr, low, mid);
+		mergesort(arr, mid + 1, high);
+		merge(arr, low, mid, high);
+	}
 }
 
-static void bsearch() {
+void Sort::merge(int arr[], int low, int mid, int high) {
+	int size1 = mid - low + 1;
+	int size2 = high - mid;
+	int i = size1, j = size2, k = low;
+	while (i < size1 && j < size2) {
+		if (arr[i] <= arr[j]) {
+			arr[k] = arr[i];
+			i++;
+		}
+		else {
+			arr[k] = arr[j];
+			j++;
+		}
+		k++;
+	}
+}
 
+int Sort::bsearch(int arr[], int size, int key) {
+	bsearch(arr, 0, size - 1, key);
+}
+
+int Sort::bsearch(int arr[], int low, int high, int key) {
+	int mid = (high + low) / 2;
+
+	if (mid < key) {
+		return bsearch(arr, low, mid, key);
+	} else {
+		return bsearch(arr, mid + 1, high, key);
+	}
+
+	if (mid == key) {
+		return mid;
+	} else if (mid == 0) {
+		return -1;
+	}
 }
