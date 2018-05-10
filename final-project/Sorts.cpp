@@ -37,8 +37,8 @@ void Sort::mergesort(int arr[], int low, int high) {
 }
 
 void Sort::merge(int arr[], int low, int mid, int high) {
-	int i = low, j = mid + 1, k = 0;
-	int tmp[h - low + 1];
+	/*int i = low, j = mid + 1, k = 0;
+	int tmp[high - low + 1];
 	while (i <= mid && j <= high) {
 		if (arr[i] < arr[j]) {
 			tmp[k] = arr[i];
@@ -62,7 +62,7 @@ void Sort::merge(int arr[], int low, int mid, int high) {
 	}
 	for (i = low; i <= high; i++) {
 		arr[i] = tmp[i - low];
-	}
+	}*/
 }
 
 int Sort::bsearch(int arr[], int size, int key) {
