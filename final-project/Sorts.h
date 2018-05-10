@@ -15,4 +15,4 @@ private:
 	static int bsearch(int arr[], int low, int high, int key);
 };
 
-#endif // !SORTS_H
+#endif

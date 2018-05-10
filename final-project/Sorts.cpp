@@ -75,8 +75,8 @@ void Sort::merge(int arr[], int low, int mid, int high) {
 		j++;
 		k++;
 	}
-	delete left;
-	delete right;
+	delete[] left;
+	delete[] right;
 }
 
 int Sort::bsearch(int arr[], int size, int key) {
