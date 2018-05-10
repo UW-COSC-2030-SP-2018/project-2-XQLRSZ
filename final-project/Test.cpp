@@ -1,11 +1,5 @@
 #include "Test.h"
 
-Test::Test() {
-	setMessage(NULL);
-	setResult(false);
-	setExpected(true);
-}
-
 Test::Test(string m, bool r, bool e) {
 	setMessage(m);
 	setResult(r);
@@ -36,6 +30,7 @@ void Test::setExpected(bool e) {
 	expected = e;
 }
 
-void Test::print() const {
-	cout << getMessage() << " : " << ((result == expected) ? "Passing" : "Failing") << endl;
+ostream& operator<<(ostream& out, const Test& right) {
+	out << right.getMessage() << " : " << ((right.result == right.expected) ? "Passing" : "Failing");
+	return out;
 }

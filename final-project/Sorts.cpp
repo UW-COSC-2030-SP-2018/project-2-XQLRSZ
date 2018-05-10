@@ -37,32 +37,46 @@ void Sort::mergesort(int arr[], int low, int high) {
 }
 
 void Sort::merge(int arr[], int low, int mid, int high) {
-	/*int i = low, j = mid + 1, k = 0;
-	int tmp[high - low + 1];
-	while (i <= mid && j <= high) {
-		if (arr[i] < arr[j]) {
-			tmp[k] = arr[i];
-			k++;
+	// Length of left and right subarrays
+	int n1 = mid - low + 1;
+	int n2 = high - mid;
+
+	// Temp arrays, allocated to avoid non-constant array lengths
+	int* left = new int[n1];
+	int* right = new int[n2];
+
+	for (int i = 0; i < n1; i++) {
+		left[i] = arr[low + i];
+	}
+	for (int j = 0; j < n2; j++) {
+		right[j] = arr[mid + 1 + j];
+	}
+
+	int i = 0, j = 0;
+	int k = low;
+	while (i < n1 && j < n2) {
+		if (left[i] <= right[j]) {
+			arr[k] = left[i];
 			i++;
 		} else {
-			arr[k] = arr[j];
-			k++;
+			arr[k] = right[j];
 			j++;
 		}
-	}
-	while (i <= mid) {
-		tmp[k] = arr[i];
 		k++;
+	}
+
+	while (i < n1) {
+		arr[k] = left[i];
 		i++;
-	}
-	while (j <= high) {
-		tmp[k] = arr[j];
 		k++;
-		j++;
 	}
-	for (i = low; i <= high; i++) {
-		arr[i] = tmp[i - low];
-	}*/
+	while (j < n2) {
+		arr[k] = right[j];
+		j++;
+		k++;
+	}
+	delete left;
+	delete right;
 }
 
 int Sort::bsearch(int arr[], int size, int key) {
