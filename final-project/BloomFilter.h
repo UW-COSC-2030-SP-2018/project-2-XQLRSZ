@@ -15,15 +15,8 @@ using namespace std;
 template<size_t SIZE, size_t N>
 class BloomFilter {
 public:
-
-	BloomFilter() : numHashes(N) {
-		if (SIZE < 1) {
-			throw "Size of Bloom filter must be greater than 0";
-		}
-		if (N < 1) {
-			throw "Number of hashes must be greater than 0";
-		}
-	}
+	// This crashes if SIZE == 0 and doesn't work if N == 0
+	BloomFilter() : numHashes(N) {}
 
 	bitset<SIZE> getBits() const {
 		return bits;
